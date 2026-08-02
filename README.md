@@ -1,45 +1,42 @@
 # The Dog Studio — Website
 
-Site web bilingue (anglais / grec) de **The Dog Studio** — Pet Boutique & Grooming Studio à Limassol, Chypre.
+Site vitrine bilingue (English / Ελληνικά) pour **The Dog Studio**, boutique pour animaux & studio de toilettage à Limassol, Chypre.
 
-> *"Where good design meets good dogs!"*
+- Stack : React 19 + TypeScript + Vite + Tailwind CSS + shadcn/ui
+- Contenu : textes et catalogue produits issus de la page Wolt publique du magasin
 
-## Contenu
-
-- **Hero** — slogan et image de la boutique
-- **About** — l'histoire du studio et ses marques (Lily's Kitchen, Royal Canin, Beco Pets, KONG…)
-- **Grooming & Spa** — 6 services avec photo dédiée
-- **Shop** — 67 vrais produits issus du catalogue Wolt, avec filtres par catégorie et liens de commande
-- **Gallery** — photos des collections
-- **Contact** — adresse, horaires, téléphone, réseaux sociaux (Facebook / Instagram / Wolt), carte Google Maps
-- Bascule de langue **EN / ΕΛ** sur tout le contenu
-
-## Infos de la boutique
-
-- Adresse : Panagi Lapa 12, 3075 Limassol, Chypre
-- Téléphone : +357 97718310
-- Horaires : Lun–Ven 09:00–19:30, Sam 09:00–16:00, Dim fermé
-- [Facebook](https://www.facebook.com/dogstudiocy/) · [Instagram](https://www.instagram.com/thedogstudiocy/) · [Wolt](https://wolt.com/en/cyp/limassol/venue/the-dog-studio)
-
-## Stack technique
-
-- React 19 + TypeScript + Vite
-- Tailwind CSS 3 + shadcn/ui
-- lucide-react (icônes)
-
-## Développement
+## Démarrage en local
 
 ```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:3000
 ```
 
 ## Build de production
 
 ```bash
-npm run build   # génère dist/
+npm run build    # génère dist/
+npm run preview  # prévisualise le build
 ```
 
-## Déploiement sur GitHub Pages
+## Images
 
-Le site est statique : le contenu de `dist/` peut être servi tel quel par GitHub Pages (branche `gh-pages`, GitHub Actions, ou tout hébergeur statique).
+Le dossier `public/images/` (86 photos : hero, services de toilettage, catégories et produits) n'est pas inclus dans ce dépôt. Récupérez l'archive `images.zip` fournie séparément, puis :
+
+```bash
+unzip images.zip -d public/   # crée public/images/
+```
+
+Avant de publier sur GitHub Pages, committez aussi les images :
+
+```bash
+git add public/images && git commit -m "Add images" && git push
+```
+
+## Déploiement GitHub Pages
+
+1. `npm run build`
+2. Pousser le contenu de `dist/` sur une branche `gh-pages` (ou utiliser l'action GitHub "Deploy static content to Pages")
+3. Settings → Pages → Source : branche `gh-pages`
+
+Le `vite.config.ts` utilise déjà `base: './'`, le site fonctionne donc tel quel sous un sous-chemin `user.github.io/<repo>/`.
